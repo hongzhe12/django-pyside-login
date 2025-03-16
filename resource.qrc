@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="/icons">
+    <file>./images/登录.svg</file>
+  </qresource>
+</RCC>
+
+

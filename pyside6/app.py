@@ -2,15 +2,17 @@ import sys
 import requests
 from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QPushButton, QLabel, QCheckBox, QMessageBox
 from PySide6.QtCore import Qt, QSettings
-from PySide6.QtGui import QDesktopServices
+from PySide6.QtGui import QDesktopServices, QIcon
 from PySide6.QtCore import QUrl
+import resource_rc
 
 class LoginWindow(QWidget):
     def __init__(self):
         super().__init__()
 
         self.setWindowTitle("登录")  # 窗口标题
-        self.setFixedSize(350, 270)  # 固定窗口大小
+        self.setFixedSize(450, 300)  # 固定窗口大小
+        self.setWindowIcon(QIcon(":/icons/images/登录.svg"))
 
         # 创建组件
         self.username_label = QLabel("用户名：")
@@ -35,7 +37,7 @@ class LoginWindow(QWidget):
         self.form_layout.addWidget(self.remember_checkbox)  # 添加复选框
 
         self.button_layout.addWidget(self.login_button)
-        self.button_layout.addWidget(self.register_button)  # 添加注册按钮
+        # self.button_layout.addWidget(self.register_button)  # 添加注册按钮
 
         self.layout.addLayout(self.form_layout)
         self.layout.addLayout(self.button_layout)
@@ -45,7 +47,7 @@ class LoginWindow(QWidget):
 
         # 信号连接
         self.login_button.clicked.connect(self.handle_login)
-        self.register_button.clicked.connect(self.open_registration_page)  # 连接注册按钮到跳转方法
+        # self.register_button.clicked.connect(self.open_registration_page)  # 连接注册按钮到跳转方法
 
         # 应用 QSS 样式
         self.apply_styles()
