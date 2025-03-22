@@ -1,0 +1,57 @@
+services:
+  postgres:
+    image: postgres:13.14-bullseye
+    container_name: mysite-postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+    env_file:
+      - ./postgres/.env
+    networks:
+      - mysite_network
+    ports:
+      - "5432:5432"
+
+  web:
+    container_name: mysite-django
+    build: .
+    command: /bin/sh start.sh
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    networks:
+      - mysite_network
+    env_file:
+      - ./postgres/.env
+
+  nginx-proxy-manager:
+    container_name: nginx-proxy-manager
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      # 管理界面端口
+      - '81:81'
+      # HTTP 端口
+      - '80:80'
+      # HTTPS 端口
+      - '443:443'
+    volumes:
+      - ./nginx-proxy-manager/data:/data
+      - ./nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+      - ./static:/static
+      - ./media:/media
+    depends_on:
+      - web
+    networks:
+      - mysite_network
+    # 用户配置在 /data/nginx/proxy_host/1.conf
+volumes:
+  postgres_data:
+    name: "postgres_data"
+
+networks:
+  mysite_network:
+    driver: bridge
