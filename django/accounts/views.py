@@ -1,10 +1,11 @@
-from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
-from django.views import View
+from django.http import JsonResponse
 from django.utils.decorators import method_decorator
+from django.views import View
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.models import User
-
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import UserRegistrationForm
 
 # 登录接口
 @method_decorator(csrf_exempt, name='dispatch')
@@ -26,7 +27,7 @@ class LoginView(View):
         if user is not None:
             login(request, user)
             return JsonResponse({
-               'message': '登录成功！',
+                'message': '登录成功！',
                 'user': {
                     'username': user.username,
                     'email': user.email,
@@ -45,5 +46,18 @@ class LogoutView(View):
     def post(self, request):
         logout(request)  # 注销用户
         return JsonResponse({
-           'message': '登出成功！'
+            'message': '登出成功！'
         }, status=200)
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, '注册成功！现在你可以使用注册信息登录了。')
+            form = UserRegistrationForm()  # 清空表单
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'accounts/register.html', {'form': form})
+

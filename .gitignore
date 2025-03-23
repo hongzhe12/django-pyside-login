@@ -1,1 +1,9 @@
 *.pyc
+.idea
+.venv
+__pycache__
+rest_framework
+admin
+migrations
+profile_pictures
+*.sqlite3

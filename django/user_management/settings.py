@@ -192,6 +192,6 @@ STATIC_URL = 'static/'
 
 # 设置静态文件收集的目标路径（DEBUG=False时使用）
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-print("STATIC_ROOT:", STATIC_ROOT)
+# print("STATIC_ROOT:", STATIC_ROOT)
 
 

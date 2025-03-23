@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 
+
 class UserProfile(models.Model):
     # 关联默认的 User 模型，使用一对一关联，当关联的 User 被删除时，此 UserProfile 也会被删除
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name=_("关联用户"))
@@ -61,3 +62,7 @@ class UserProfile(models.Model):
         verbose_name = "用户资料"
         # 复数形式的中文名称，后台列表页显示的名称
         verbose_name_plural = "用户资料"
+
+
+
+
