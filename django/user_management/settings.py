@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-o9ykalh2jwm=_a$tb!(m@-%f%2htu$j*^ogl9@!m=rmj23hdi1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
+    'official.apps.OfficialConfig',
     'corsheaders',
 ]
 
@@ -186,12 +187,12 @@ SIMPLEUI_DEFAULT_THEME = 'element.css' # Element-UI
 STATIC_URL = 'static/'
 
 # （DEBUG=True时使用）
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR,'static'),
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static'),
+]
 
 # 设置静态文件收集的目标路径（DEBUG=False时使用）
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# print("STATIC_ROOT:", STATIC_ROOT)
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 

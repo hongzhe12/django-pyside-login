@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/accounts/', include('accounts.urls')),  # 将 accounts 应用的 URL 包含到这里
+    path('web/', include('official.urls'))
 ]
 
 # 仅在开发环境下添加媒体文件的 URL 映射

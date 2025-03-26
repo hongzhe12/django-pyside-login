@@ -1,0 +1,334 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简历助手</title>
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url("{% static 'img/bg4.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: #F5F5F5;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* 通用按钮样式 */
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* 顶部导航栏 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(224, 224, 224, 0.6);
+            padding: 15px 5%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333333;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #007BFF;
+        }
+
+        .btn-login {
+            background-color: #F5F5F5;
+            color: #000;
+        }
+
+        .btn-login:hover {
+            background-color: #e0e0e0;
+        }
+
+        .btn-get-started {
+            background-color: #000;
+            color: #FFFFFF;
+        }
+
+        .btn-get-started:hover {
+            background-color: #333;
+        }
+
+        /* 主内容区域 */
+        .hero {
+            text-align: center;
+            padding: 150px 5%;
+            {#background-color: rgba(255, 255, 255, 0.1);#}
+            background-color: rgba(255, 255, 255, 0.6);
+            {#background-image: url("{% static 'img/bg3.jpg' %}");#}
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            font-weight: normal;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .hero-buttons .btn {
+            padding: 15px 30px;
+        }
+
+        /* 功能模块 */
+        .features {
+            text-align: center;
+            padding: 100px 5%;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .features h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+        }
+
+        .feature-list {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            width: 300px;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 底部区域 */
+        .footer {
+            background-color: rgba(224, 224, 224, 0.6);
+            text-align: center;
+            padding: 100px 5%;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .footer .btn {
+            padding: 15px 30px;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .footer-nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-nav ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-nav ul li a {
+            text-decoration: none;
+            color: #333333;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav ul li a:hover {
+            color: #007BFF;
+        }
+
+        .social-links {
+            margin-top: 50px;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            color: #333333;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #007BFF;
+        }
+
+        .copyright {
+            margin-top: 50px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .feature-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-nav {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 顶部导航栏 -->
+    <nav>
+        <div class="nav-logo">简历助手</div>
+        <div class="nav-links">
+            <a href="#" onclick="alert('页面跳转暂未实现')">功能</a>
+            <a href="#" onclick="alert('页面跳转暂未实现')">关于</a>
+            <button class="btn btn-login" onclick="alert('登录弹窗暂未实现')">登录</button>
+            <button class="btn btn-get-started" onclick="scrollToCreateAccount()">立即开始</button>
+        </div>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <div class="hero">
+        <h1>投简历神器来袭，求职困局一键破局！</h1>
+        <h2>投简历！快人一步！</h2>
+        <div class="hero-buttons">
+            <button class="btn btn-get-started" onclick="scrollToCreateAccount()">立即开始</button>
+            <button class="btn" onclick="alert('功能详情页跳转暂未实现')">了解更多</button>
+        </div>
+    </div>
+
+    <!-- 功能模块 -->
+    <div class="features">
+        <h2>升级核心功能，求职快人N步</h2>
+        <div class="feature-list">
+            <div class="feature">
+                <h3>排行榜系统大进化</h3>
+                <p>
+                    1.9版本的排行榜系统已经够吸睛，2.0版本直接把便捷度拉满！如今采用全自动模式，无需繁琐手动上传数据，更不用登录账号折腾。只要你投递一次简历，瞬间自动登上排行榜。在这里，你能清楚看到自己与其他求职者的较量，投递数量、成功投递次数、面试邀请数等关键数据一目了然，激发你的斗志，让求职充满竞技感。</p>
+            </div>
+            <div class="feature">
+                <h3>投递记录自动存档</h3>
+                <p>
+                    每次投递简历，是不是都担心后续难以追踪进度？2.0版本贴心解决这个难题。系统会在你投递后自动生成详细记录，并且全部汇总到桌面的【简历投递数据】文件夹。不管是回顾投递历史，还是检查哪些岗位有后续动向，打开文件夹，求职进度清清楚楚，心里更有底。</p>
+            </div>
+            <div class="feature">
+                <h3>地区筛选精细到“毛细血管”</h3>
+                <p>
+                    找工作时，地区范围要是设置不好，要么错过心仪岗位，要么收到一堆偏远地区的无效邀请。现在，2.0版本新增地区硬筛选功能，支持三级行政区划，从市级、区/县级，再细化到街道/社区，层层锁定，精准定位你理想工作的地理位置，让求职范围更聚焦，每一份投递都更有价值。</p>
+            </div>
+            <div class="feature">
+                <h3>筛选规则与IP自动存储</h3>
+                <p>
+                    以往设置筛选规则、输入IP地址，每次打开软件都要重复操作，麻烦又浪费时间。2.0版本直接将这些设置自动保存至本地数据库，下次使用时，软件“记住”你的偏好，无需重复填写，一键开启高效求职，整个流程丝滑顺畅。</p>
+            </div>
+        </div>
+        <h2>延续经典优势，求职体验全方位拉满</h2>
+        <div class="feature-list">
+            <div class="feature">
+                <h3>精准岗位筛选</h3>
+                <p>输入关键词，不管招聘网站上信息多么繁杂，软件瞬间筛出合适岗位，让你精准定位，告别迷茫。</p>
+            </div>
+            <div class="feature">
+                <h3>薪资范围自定义</h3>
+                <p>明确自己的薪资期望，自定义范围，只看符合心意的工作，让付出与收获匹配。</p>
+            </div>
+            <div class="feature">
+                <h3>安全便捷操作</h3>
+                <p>手机端随时随地可用，地铁上、咖啡馆里、家中床上，只要有网络，求职不受限，安全又方便。</p>
+            </div>
+            <div class="feature">
+                <h3>自动投递简历</h3>
+                <p>软件一键投简历，把节省下来的时间花在打磨面试技巧、提升专业能力上，让求职更高效。</p>
+            </div>
+            <div class="feature">
+                <h3>界面设计革新</h3>
+                <p>无边框窗口简洁现代，标题栏可自定义，滚动条全新样式，默认隐藏，需要时平滑显示，操作丝滑，体验感直线上升。</p>
+            </div>
+            <div class="feature">
+                <h3>星火AI大模型加持</h3>
+                <p>写求职信文采出众，优化简历亮点突出，掌握面试技巧从容应对，AI全方位为你的求职之路保驾护航。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部区域 -->
+    <div class="footer">
+        <h2>赶紧抓住机会，用2.0版本开启你的求职逆袭之旅！</h2>
+        <button class="btn" onclick="alert('注册表单暂未实现')" id="create-account">立即下载</button>
+        <div class="footer-nav">
+            <ul>
+                <li><a href="#" onclick="alert('页面跳转暂未实现')">功能</a></li>
+                <li><a href="#" onclick="alert('页面跳转暂未实现')">关于</a></li>
+            </ul>
+        </div>
+        <div class="copyright">
+            © 2024 简历助手 版权所有
+        </div>
+    </div>
+
+    <script>
+        function scrollToCreateAccount() {
+            const createAccountButton = document.getElementById('create-account');
+            createAccountButton.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>
+    
