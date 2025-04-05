@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-o9ykalh2jwm=_a$tb!(m@-%f%2htu$j*^ogl9@!m=rmj23hdi1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
-    'official.apps.OfficialConfig',
     'corsheaders',
 ]
 
@@ -173,7 +172,7 @@ SIMPLEUI_ANALYSIS = False
 SIMPLEUI_HOME_TITLE = '简历助手-用户管理系统'
 
 
-SIMPLEUI_LOGO = 'http://localhost/static/logo/logo.png'
+PLEUI_LOGO = 'https://221793.xyz/static/logo/logo.png'
 
 # 设置主题
 SIMPLEUI_DEFAULT_THEME = 'element.css' # Element-UI
@@ -187,12 +186,14 @@ SIMPLEUI_DEFAULT_THEME = 'element.css' # Element-UI
 STATIC_URL = 'static/'
 
 # （DEBUG=True时使用）
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR,'static'),
+# ]
 
 # 设置静态文件收集的目标路径（DEBUG=False时使用）
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+print("STATIC_ROOT:", STATIC_ROOT)
 
-
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://221793.xyz'
+]
