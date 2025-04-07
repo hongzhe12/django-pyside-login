@@ -48,6 +48,7 @@ services:
     networks:
       - mysite_network
     # 用户配置在 /data/nginx/proxy_host/1.conf
+    # tail -f /data/logs/fallback_access.log
 volumes:
   postgres_data:
     name: "postgres_data"
